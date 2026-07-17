@@ -1,0 +1,10 @@
+.env
+venv/
+.venv/
+__pycache__/
+.pytest_cache/
+logs/*.log
+explanation.mp4
+.vscode/
+.idea/
+*.pyc

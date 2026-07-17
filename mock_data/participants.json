@@ -1,0 +1,58 @@
+[
+  {
+    "participant_id": "p1",
+    "display_name": "MacBook Pro",
+    "email": null,
+    "join_time": "2025-01-15T09:58:12Z",
+    "leave_time": null,
+    "webcam_on_ratio": 0.95,
+    "speaking_duration_sec": 1380,
+    "screen_share_events": 2,
+    "is_interviewer_hint": false,
+    "voice_activity_ratio": 0.72,
+    "speaking_rate_wpm": 145,
+    "interruptions_count": 1
+  },
+  {
+    "participant_id": "p2",
+    "display_name": "Priya Verma",
+    "email": "priya.verma@sherlock.sh",
+    "join_time": "2025-01-15T09:59:40Z",
+    "leave_time": null,
+    "webcam_on_ratio": 0.80,
+    "speaking_duration_sec": 640,
+    "screen_share_events": 0,
+    "is_interviewer_hint": false,
+    "voice_activity_ratio": 0.35,
+    "speaking_rate_wpm": 132,
+    "interruptions_count": 0
+  },
+  {
+    "participant_id": "p3",
+    "display_name": "Amit K",
+    "email": "amit.k@sherlock.sh",
+    "join_time": "2025-01-15T10:00:05Z",
+    "leave_time": null,
+    "webcam_on_ratio": 0.55,
+    "speaking_duration_sec": 210,
+    "screen_share_events": 0,
+    "is_interviewer_hint": false,
+    "voice_activity_ratio": 0.15,
+    "speaking_rate_wpm": 128,
+    "interruptions_count": 0
+  },
+  {
+    "participant_id": "p4",
+    "display_name": "Guest 4821",
+    "email": null,
+    "join_time": "2025-01-15T10:01:30Z",
+    "leave_time": "2025-01-15T10:10:00Z",
+    "webcam_on_ratio": 0.0,
+    "speaking_duration_sec": 0,
+    "screen_share_events": 0,
+    "is_interviewer_hint": false,
+    "voice_activity_ratio": 0.0,
+    "speaking_rate_wpm": null,
+    "interruptions_count": 0
+  }
+]

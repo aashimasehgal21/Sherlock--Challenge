@@ -1,0 +1,10 @@
+{
+  "meeting_id": "meet-9182",
+  "platform": "Google Meet",
+  "scheduled_start": "2025-01-15T10:00:00Z",
+  "candidate_name": "Rohan Sharma",
+  "candidate_email": "rohan.sharma92@gmail.com",
+  "interviewer_names": ["Priya Verma", "Amit Kulkarni"],
+  "interviewer_emails": ["priya.verma@sherlock.sh", "amit.k@sherlock.sh"],
+  "calendar_invite_subject": "Interview: Rohan Sharma - Backend Engineer"
+}

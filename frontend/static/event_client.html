@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+  frontend/static/event_client.html
+  ------------------------------------
+  A minimal, dependency-free client proving the system is genuinely
+  EVENT-DRIVEN, not polling: it opens ONE WebSocket connection and just
+  sits there. There is no setInterval, no "ask again in N seconds" -
+  new predictions simply arrive the instant the backend has something
+  new to say.
+
+  How to use:
+  1. Start the backend: uvicorn backend.main:app --reload --port 8000
+  2. Open this file directly in a browser (double-click it)
+  3. In a separate terminal, run: python scripts/simulate_live_meeting.py
+  4. Watch predictions appear here in real time as events happen
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sherlock — Live Event Stream (zero polling)</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 720px; margin: 40px auto; background: #fafafa; color: #222; }
+  h1 { font-size: 20px; }
+  #status { padding: 8px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px; font-size: 13px; }
+  .connected { background: #d9f2e6; color: #0a6b3f; }
+  .disconnected { background: #fbe1df; color: #8c2f22; }
+  .event { background: white; border: 1px solid #e2e2e2; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; }
+  .top { font-weight: bold; font-size: 16px; }
+  .conf { color: #0a6b3f; font-weight: bold; }
+  .meta { color: #777; font-size: 12px; margin-top: 4px; }
+  #log { display: flex; flex-direction: column-reverse; }
+  input { padding: 6px; width: 260px; }
+  button { padding: 6px 12px; }
+</style>
+</head>
+<body>
+  <h1>🕵️ Sherlock — Live Event Stream</h1>
+  <p>This page opens one WebSocket connection and never polls. New predictions appear here the instant the backend processes an event.</p>
+
+  <div>
+    Meeting ID: <input id="meetingId" value="sim-meeting-1">
+    <button onclick="connect()">Connect</button>
+  </div>
+  <br>
+  <div id="status" class="disconnected">Not connected</div>
+  <div id="log"></div>
+
+  <script>
+    let ws = null;
+
+    function connect() {
+      if (ws) ws.close();
+      const meetingId = document.getElementById('meetingId').value.trim();
+      ws = new WebSocket(`ws://127.0.0.1:8000/ws/${meetingId}`);
+
+      const statusEl = document.getElementById('status');
+
+      ws.onopen = () => {
+        statusEl.textContent = `Connected — listening for events on "${meetingId}" (push-based, no polling)`;
+        statusEl.className = 'connected';
+      };
+
+      ws.onclose = () => {
+        statusEl.textContent = 'Disconnected';
+        statusEl.className = 'disconnected';
+      };
+
+      ws.onmessage = (event) => {
+        const msg = JSON.parse(event.data);
+        const result = msg.result;
+        const top = result.top_candidate;
+
+        const div = document.createElement('div');
+        div.className = 'event';
+        if (top) {
+          div.innerHTML = `
+            <div class="top">${top.display_name} <span class="conf">${top.confidence}%</span></div>
+            <div class="meta">status: ${result.status} | received at ${new Date().toLocaleTimeString()} | type: ${msg.type}</div>
+          `;
+        } else {
+          div.innerHTML = `<div class="meta">status: ${result.status} — waiting for more data...</div>`;
+        }
+        document.getElementById('log').prepend(div);
+      };
+    }
+
+    // Auto-connect on page load
+    connect();
+  </script>
+</body>
+</html>

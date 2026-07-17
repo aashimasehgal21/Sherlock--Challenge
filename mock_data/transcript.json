@@ -1,0 +1,8 @@
+[
+  {"participant_id": "p2", "text": "Hi, thanks for joining today. Can you start by telling us about your experience with distributed systems?", "timestamp": "2025-01-15T10:00:30Z"},
+  {"participant_id": "p1", "text": "Sure, I'm Rohan. I've worked on backend systems for about 4 years, mostly with Go and Kafka for event-driven pipelines.", "timestamp": "2025-01-15T10:00:50Z"},
+  {"participant_id": "p3", "text": "Nice. Can you walk us through how you'd design a rate limiter?", "timestamp": "2025-01-15T10:02:10Z"},
+  {"participant_id": "p1", "text": "I'd probably use a token bucket algorithm backed by Redis so it works across multiple servers.", "timestamp": "2025-01-15T10:02:30Z"},
+  {"participant_id": "p2", "text": "Great answer. Let's move to a coding question, I'll share my screen.", "timestamp": "2025-01-15T10:05:00Z"},
+  {"participant_id": "p1", "text": "Sounds good, I'll share my screen too so you can see me code.", "timestamp": "2025-01-15T10:05:10Z"}
+]
