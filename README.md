@@ -156,7 +156,3 @@ Sherlock-AI/
 - Learned signal weights from labeled historical data instead of fixed weights
 - Real bot integration with Meet/Zoom/Teams APIs to replace mock data
 
-
-
-
-See [`architecture_diagram.svg`](architecture_diagram.svg).
